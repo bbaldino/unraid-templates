@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<Container version="2">
+    <Name>wakeword-training</Name>
+    <Repository>ghcr.io/bbaldino/wakeword-training:latest</Repository>
+    <Registry>https://ghcr.io/bbaldino/wakeword-training</Registry>
+    <Network>bridge</Network>
+    <Privileged>false</Privileged>
+    <Project>https://github.com/bbaldino/wakeword-training</Project>
+    <Overview>Train custom wake word models for openwakeword using synthetic speech generation and GPU-accelerated training. Produces .onnx and .tflite models for use with Home Assistant voice pipelines.</Overview>
+    <Category>HomeAutomation: AI:</Category>
+    <ExtraParams>--runtime=nvidia</ExtraParams>
+    <Config Name="Wake Word" Target="WAKE_WORD" Default="hey nanoclaw" Type="Variable" Display="always" Required="true" Mask="false" Description="The wake word phrase to train, e.g. 'hey nanoclaw'"/>
+    <Config Name="Training Samples" Target="N_SAMPLES" Default="10000" Type="Variable" Display="advanced" Required="false" Mask="false" Description="Number of positive training samples to generate"/>
+    <Config Name="Validation Samples" Target="N_SAMPLES_VAL" Default="2000" Type="Variable" Display="advanced" Required="false" Mask="false" Description="Number of validation samples"/>
+    <Config Name="Training Steps" Target="TRAINING_STEPS" Default="50000" Type="Variable" Display="advanced" Required="false" Mask="false" Description="Maximum training steps"/>
+    <Config Name="Layer Size" Target="LAYER_SIZE" Default="32" Type="Variable" Display="advanced" Required="false" Mask="false" Description="Model layer dimension (larger = more capable but slower)"/>
+    <Config Name="NVIDIA Visible Devices" Target="NVIDIA_VISIBLE_DEVICES" Default="all" Type="Variable" Display="advanced" Required="false" Mask="false" Description="Which GPU(s) to use. 'all' or a specific GPU UUID."/>
+    <Config Name="NVIDIA Driver Capabilities" Target="NVIDIA_DRIVER_CAPABILITIES" Default="all" Type="Variable" Display="advanced-hide" Required="false" Mask="false" Description="NVIDIA driver capabilities to expose"/>
+    <Config Name="Data Cache" Target="/data" Default="/mnt/user/ai/wakeword-data" Mode="rw" Type="Path" Display="always" Required="true" Mask="false" Description="Cached datasets and intermediate training data (~12GB first run)"/>
+    <Config Name="Model Output" Target="/output" Default="/mnt/user/ai/wakeword-output" Mode="rw" Type="Path" Display="always" Required="true" Mask="false" Description="Where the trained .onnx and .tflite models are written"/>
+</Container>
