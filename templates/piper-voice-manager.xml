@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<Container version="2">
+    <Name>piper-voice-manager</Name>
+    <Repository>ghcr.io/bbaldino/piper-voice-manager:latest</Repository>
+    <Registry>https://ghcr.io/bbaldino/piper-voice-manager</Registry>
+    <Network>bridge</Network>
+    <Privileged>false</Privileged>
+    <Project>https://github.com/bbaldino/piper-voice-manager</Project>
+    <Overview>Web UI for browsing, previewing, and selecting Piper TTS voices. Works with voice-orchestrator to control which voice is used for speech output. Preview voices directly in the browser or on a device via Home Assistant. All settings are editable from the UI.</Overview>
+    <Category>HomeAutomation: Tools:</Category>
+    <WebUI>http://[IP]:[PORT:8000]</WebUI>
+    <ExtraParams/>
+    <Config Name="Web UI Port" Target="8000" Default="8000" Type="Port" Display="always" Required="true" Mask="false" Description="Port for the web interface"/>
+    <Config Name="Data Directory" Target="/data" Default="/mnt/user/appdata/piper-voice-manager" Mode="rw" Type="Path" Display="always" Required="true" Mask="false" Description="Persistent storage for settings"/>
+    <Config Name="Piper Host" Target="PIPER_HOST" Default="" Type="Variable" Display="always" Required="true" Mask="false" Description="Wyoming Piper TTS server hostname or IP"/>
+    <Config Name="Piper Port" Target="PIPER_PORT" Default="10200" Type="Variable" Display="always" Required="false" Mask="false" Description="Wyoming Piper TTS server port"/>
+    <Config Name="Orchestrator URL" Target="ORCHESTRATOR_URL" Default="" Type="Variable" Display="always" Required="true" Mask="false" Description="voice-orchestrator API URL (e.g. http://192.168.1.44:8100)"/>
+    <Config Name="HA URL" Target="HA_URL" Default="" Type="Variable" Display="always" Required="false" Mask="false" Description="Home Assistant URL (optional, for device preview)"/>
+    <Config Name="HA Token" Target="HA_TOKEN" Default="" Type="Variable" Display="always" Required="false" Mask="true" Description="Home Assistant long-lived access token (optional, for device preview)"/>
+    <Config Name="HA Media Player" Target="HA_MEDIA_PLAYER" Default="" Type="Variable" Display="always" Required="false" Mask="false" Description="Target media player entity for device preview (e.g. media_player.kitchen_dashboard)"/>
+    <Config Name="HA TTS Entity" Target="HA_TTS_ENTITY" Default="tts.piper" Type="Variable" Display="advanced-hide" Required="false" Mask="false" Description="Home Assistant TTS entity"/>
+</Container>
