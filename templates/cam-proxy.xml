@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<Container version="2">
+    <Name>cam-proxy</Name>
+    <Repository>ghcr.io/bbaldino/cam-proxy:latest</Repository>
+    <Registry>https://ghcr.io/bbaldino/cam-proxy</Registry>
+    <Network>bridge</Network>
+    <Privileged>false</Privileged>
+    <Project>https://github.com/bbaldino/cam-proxy</Project>
+    <Overview>RTSP proxy with backchannel support, WebRTC proxy for go2rtc, doorbell chime/message injection, and DashCast management. Sits between go2rtc and IP cameras to mediate two-way audio.</Overview>
+    <Category>HomeAutomation: Tools:</Category>
+    <WebUI>http://[IP]:[PORT:8899]</WebUI>
+    <ExtraParams/>
+    <Config Name="HTTP Port" Target="8899" Default="8899" Type="Port" Display="always" Required="true" Mask="false" Description="Port for the HTTP API and web UI"/>
+    <Config Name="RTSP Proxy Port" Target="8554" Default="8554" Type="Port" Display="always" Required="true" Mask="false" Description="Port for the RTSP proxy (go2rtc connects here)"/>
+    <Config Name="Audio Data" Target="/app/audio" Default="/mnt/user/appdata/cam-proxy/audio" Mode="rw" Type="Path" Display="always" Required="true" Mask="false" Description="Persistent storage for chime and message audio files"/>
+    <Config Name="go2rtc Host" Target="GO2RTC_HOST" Default="" Type="Variable" Display="always" Required="true" Mask="false" Description="go2rtc address for WebRTC proxying (e.g. 192.168.1.100:1984)"/>
+    <Config Name="Camera Host" Target="CAMERA_HOST" Default="" Type="Variable" Display="always" Required="true" Mask="false" Description="Camera IP address"/>
+    <Config Name="Camera Port" Target="CAMERA_PORT" Default="554" Type="Variable" Display="always" Required="false" Mask="false" Description="Camera RTSP port"/>
+    <Config Name="Camera User" Target="CAMERA_USER" Default="" Type="Variable" Display="always" Required="true" Mask="false" Description="Camera RTSP username"/>
+    <Config Name="Camera Password" Target="CAMERA_PASS" Default="" Type="Variable" Display="always" Required="true" Mask="true" Description="Camera RTSP password"/>
+    <Config Name="Camera Stream" Target="CAMERA_STREAM" Default="" Type="Variable" Display="always" Required="true" Mask="false" Description="Camera RTSP stream path (e.g. h264Preview_01_sub)"/>
+    <Config Name="CORS Origins" Target="CORS_ORIGINS" Default="" Type="Variable" Display="advanced-hide" Required="false" Mask="false" Description="Comma-separated list of allowed CORS origins"/>
+</Container>
