@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<Container version="2">
+    <Name>dashboard</Name>
+    <Repository>ghcr.io/bbaldino/dashboard:latest</Repository>
+    <Registry>https://ghcr.io/bbaldino/dashboard</Registry>
+    <Network>bridge</Network>
+    <Privileged>false</Privileged>
+    <Project>https://github.com/bbaldino/dashboard</Project>
+    <Overview>Custom kitchen dashboard with calendar, weather, sports scores, package tracking, music controls, chore management, driving time estimates, and more. React/TypeScript frontend with Rust/Axum backend.</Overview>
+    <Category>HomeAutomation: Tools:</Category>
+    <WebUI>http://[IP]:[PORT:3042]</WebUI>
+    <ExtraParams/>
+    <Config Name="HTTP Port" Target="3042" Default="3042" Mode="tcp" Type="Port" Display="always" Required="true" Mask="false" Description="Port for the dashboard web UI and API"/>
+    <Config Name="Data" Target="/data" Default="/mnt/user/appdata/dashboard" Mode="rw" Type="Path" Display="always" Required="true" Mask="false" Description="Persistent storage for SQLite database and configuration"/>
+    <Config Name="HA URL" Target="HA_URL" Default="" Type="Variable" Display="always" Required="false" Mask="false" Description="Home Assistant URL (e.g. http://192.168.1.42:8123)"/>
+    <Config Name="HA Token" Target="HA_TOKEN" Default="" Type="Variable" Display="always" Required="false" Mask="true" Description="Home Assistant long-lived access token"/>
+</Container>
