@@ -10,8 +10,8 @@
     <Category>HomeAutomation: Tools:</Category>
     <WebUI>http://[IP]:[PORT:8899]</WebUI>
     <ExtraParams/>
-    <Config Name="HTTP Port" Target="8899" Default="8899" Type="Port" Display="always" Required="true" Mask="false" Description="Port for the HTTP API and web UI"/>
-    <Config Name="RTSP Proxy Port" Target="8554" Default="8554" Type="Port" Display="always" Required="true" Mask="false" Description="Port for the RTSP proxy (go2rtc connects here)"/>
+    <Config Name="HTTP Port" Target="8899" Default="8899" Mode="tcp" Type="Port" Display="always" Required="true" Mask="false" Description="Port for the HTTP API and web UI"/>
+    <Config Name="RTSP Proxy Port" Target="8554" Default="8554" Mode="tcp" Type="Port" Display="always" Required="true" Mask="false" Description="Port for the RTSP proxy (go2rtc connects here)"/>
     <Config Name="Audio Data" Target="/app/audio" Default="/mnt/user/appdata/cam-proxy/audio" Mode="rw" Type="Path" Display="always" Required="true" Mask="false" Description="Persistent storage for chime and message audio files"/>
     <Config Name="go2rtc Host" Target="GO2RTC_HOST" Default="" Type="Variable" Display="always" Required="true" Mask="false" Description="go2rtc address for WebRTC proxying (e.g. 192.168.1.100:1984)"/>
     <Config Name="Camera Host" Target="CAMERA_HOST" Default="" Type="Variable" Display="always" Required="true" Mask="false" Description="Camera IP address"/>
