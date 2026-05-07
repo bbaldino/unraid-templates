@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<Container version="2">
+    <Name>caas</Name>
+    <Repository>ghcr.io/bbaldino/caas:latest</Repository>
+    <Registry>https://ghcr.io/bbaldino/caas</Registry>
+    <Network>bridge</Network>
+    <Privileged>false</Privileged>
+    <Project>https://github.com/bbaldino/caas</Project>
+    <Overview>HTTP server that wraps the Claude Code CLI for LAN use. Exposes an OpenAI Chat Completions surface at /openai/v1/* and a caas-native session API at /sessions/*. Bootstrap once after first start with: docker exec -it caas claude /login</Overview>
+    <Category>Productivity: Tools:</Category>
+    <WebUI>http://[IP]:[PORT:8080]/health</WebUI>
+    <ExtraParams/>
+    <Config Name="HTTP Port" Target="8080" Default="8080" Mode="tcp" Type="Port" Display="always" Required="true" Mask="false" Description="Port for the caas HTTP API"/>
+    <Config Name="Claude State" Target="/home/app" Default="/mnt/cache/appdata/caas" Mode="rw" Type="Path" Display="always" Required="true" Mask="false" Description="Persistent storage for OAuth credentials and v2 session state. Bootstrap with: docker exec -it caas claude /login"/>
+    <Config Name="Log Level" Target="CAAS_LOG_LEVEL" Default="info" Type="Variable" Display="always" Required="false" Mask="false" Description="tracing filter (info, debug, trace). Can also be changed at runtime via POST /admin/log-level."/>
+    <Config Name="Effort" Target="CAAS_EFFORT" Default="high" Type="Variable" Display="always" Required="false" Mask="false" Description="Default reasoning budget: low, medium, high, xhigh, max. Per-request override via X-Caas-Effort header (v1) or effort field (v2)."/>
+    <Config Name="Default Model" Target="CAAS_DEFAULT_MODEL" Default="sonnet" Type="Variable" Display="always" Required="false" Mask="false" Description="Fallback model: sonnet, opus, haiku"/>
+    <Config Name="Max Concurrency" Target="CAAS_MAX_CONCURRENCY" Default="8" Type="Variable" Display="advanced" Required="false" Mask="false" Description="Maximum simultaneous claude subprocesses"/>
+</Container>
