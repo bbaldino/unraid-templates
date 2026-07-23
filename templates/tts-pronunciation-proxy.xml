@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<Container version="2">
+    <Name>tts-pronunciation-proxy</Name>
+    <Repository>ghcr.io/bbaldino/tts-pronunciation-proxy:latest</Repository>
+    <Registry>https://ghcr.io/bbaldino/tts-pronunciation-proxy</Registry>
+    <Network>bridge</Network>
+    <Privileged>false</Privileged>
+    <Project>https://github.com/bbaldino/tts-pronunciation-proxy</Project>
+    <Overview>Pronunciation proxy for an OpenAI-compatible TTS server (e.g. Kokoro-FastAPI). Sits in front of the TTS and respells known-mispronounced words (sonarr -> sonar) in the request before forwarding; a transparent reverse proxy for every other endpoint, streaming audio straight back. Point TTS clients at this instead of the raw server, and manage the respelling list in the built-in web UI at /pronunciation/. The raw TTS stays reachable for direct use.</Overview>
+    <Category>HomeAutomation: AI:</Category>
+    <WebUI>http://[IP]:[PORT:8881]/pronunciation/</WebUI>
+    <Config Name="Web UI / API Port" Target="8881" Default="8881" Type="Port" Display="always" Required="true" Mask="false" Description="Service port. Point TTS clients here; the management UI is at /pronunciation/"/>
+    <Config Name="Upstream TTS URL" Target="PRONUNCIATION_UPSTREAM" Default="http://192.168.1.42:8880" Type="Variable" Display="always" Required="true" Mask="false" Description="Base URL of the OpenAI-compatible TTS server this forwards to (e.g. Kokoro-FastAPI)"/>
+    <Config Name="Data" Target="/data" Default="/mnt/user/appdata/tts-pronunciation-proxy" Mode="rw" Type="Path" Display="always" Required="true" Mask="false" Description="Persists pronunciations.json"/>
+    <Config Name="Log level" Target="RUST_LOG" Default="info" Type="Variable" Display="advanced-hide" Required="false" Mask="false" Description="Log verbosity: error / warn / info / debug"/>
+</Container>
